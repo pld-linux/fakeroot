@@ -1,5 +1,6 @@
 Summary:	Gives a fake root environment
 Summary(pl):	Umo¿liwia uzyskanie ,,podrobione'' ¶rodowisko roota
+Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	0.4.4
 Release:	3
@@ -33,6 +34,12 @@ dostarcza w³asne chown, chmod, mknod, stat itp.
 
 Je¶li nie rozumiesz niczego z powy¿szych informacji to nie
 potrzebujesz tego pakietu!
+
+%description -l pt_BR
+Este pacote permite a construção de pacotes por usuários sem
+privilégios de root. Isso e' feito utilizando libfakeroot.so com
+LD_PRELOAD, que prove implementacoes de getuid, chown, chmod, mknod,
+stat e outros, criando um falso ambiente de root.
 
 %prep
 %setup -q -n %{name}-%{version}
