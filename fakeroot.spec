@@ -3,7 +3,7 @@ Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	0.4.5
-Release:	6
+Release:	7
 %define		debver 2.3
 License:	GPL (see COPYING)
 Group:		Development/Tools
