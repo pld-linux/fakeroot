@@ -1,16 +1,17 @@
 Summary:	Gives a fake root environment
-Summary(pl):	Umo¿liwia uzyskanie ,,podrobione'' ¶rodowisko roota
+Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	0.4.4
-Release:	3
-%define		debver 9.2
+Version:	0.4.5
+Release:	1
+%define		debver 2
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
 Group(fr):	Development/Outils
 Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}-%{debver}.tar.gz
+Patch0:		%{name}-ac_fix.patch
 BuildRequires:	libtool
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -43,11 +44,15 @@ stat e outros, criando um falso ambiente de root.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 rm missing
+libtoolize --copy --force
+aclocal
+autoconf
 automake -a -c
-%configure2_13
+%configure
 %{__make}
 
 %install
