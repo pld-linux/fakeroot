@@ -3,12 +3,13 @@ Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	0.4.5
-Release:	3
+Release:	4
 %define		debver 2.1
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}-%{debver}.tar.gz
 Patch0:		%{name}-ac_fix.patch
+Patch1:		%{name}-amfix.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
@@ -43,13 +44,14 @@ stat e outros, criando um falso ambiente de root.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
-rm missing
+rm -f missing
 libtoolize --copy --force
 aclocal
 autoconf
-automake -a -c -f
+automake -a -c
 %configure
 %{__make}
 
@@ -63,8 +65,8 @@ gzip -9nf DEBUG AUTHORS COPYING README.fake BUGS debian/changelog
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)

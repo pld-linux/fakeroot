@@ -1,0 +1,12 @@
+--- fakeroot-0.4.5/Makefile.am.orig	Tue Sep  7 22:38:14 1999
++++ fakeroot-0.4.5/Makefile.am	Sun Apr 28 22:55:02 2002
+@@ -10,7 +10,8 @@
+ libfakeroot_la_DEPENDENCIES=wrapdef.h wrapstruct.h 
+ 
+ bin_PROGRAMS=faked
+-faked_SOURCES=faked.cc communicate.c
++faked_SOURCES=faked.cc
++faked_LDADD=communicate.lo
+ 
+ simple_SOURCES=simple.c
+ noinst_PROGRAMS=simple
