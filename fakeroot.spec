@@ -55,8 +55,6 @@ rm -f missing
 %configure
 %{__make}
 
-gzip -9nf DEBUG AUTHORS COPYING README.fake BUGS debian/changelog
-
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -70,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz debian/*.gz
+%doc DEBUG AUTHORS COPYING README.fake BUGS debian/changelog
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}/libfakeroot
 %attr(755,root,root) %{_libdir}/libfakeroot/lib*so.*
