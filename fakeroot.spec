@@ -7,9 +7,6 @@ Release:	2
 %define		debver 2.1
 License:	GPL (see COPYING)
 Group:		Development/Tools
-Group(de):	Entwicklung/Werkzeuge
-Group(fr):	Development/Outils
-Group(pl):	Programowanie/Narzêdzia
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}-%{debver}.tar.gz
 Patch0:		%{name}-ac_fix.patch
 BuildRequires:	libtool
