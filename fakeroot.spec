@@ -48,7 +48,7 @@ stat e outros, criando um falso ambiente de root.
 
 %build
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 aclocal
 %{__autoconf}
 %{__automake}
