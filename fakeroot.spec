@@ -2,39 +2,50 @@ Summary:	Gives a fake root environment
 Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	0.4.5
-Release:	7
-%define		debver 2.3
+Version:	0.8.3
+Release:	1
 License:	GPL (see COPYING)
 Group:		Development/Tools
-Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}-%{debver}.tar.gz
-# Source0-md5:	dfbd103e515ec41301936d439598c645
-Patch0:		%{name}-ac_fix.patch
-Patch1:		%{name}-amfix.patch
-BuildRequires:	autoconf
+Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.tar.gz
+# Source0-md5:	43586553a4ed08927934f686054b1fa2
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%description
-This package is intended to enable something like: fakeroot rpm
---rebuild i.e. to remove the need to become root for a package
-build. This is done by setting LD_PRELOAD to a "libfakeroot.so.0.0",
-that provides wrappers around chown, chmod, mknod, stat, etc.
+%define		_libdir		%{_prefix}/%{_lib}/libfakeroot
 
-If you don't understand any of this, you do not need this!
+%description
+fakeroot runs a command in an environment were it appears to have root
+privileges for file manipulation. This is useful for allowing users to
+create archives (tar, ar, .deb etc.) with files in them with root
+permissions/ownership. Without fakeroot one would have to have root
+privileges to create the constituent files of the archives with the
+correct permissions and ownership, and then pack them up, or one would
+have to construct the archives directly, without using the archiver.
+
+fakeroot works by replacing the file manipulation library functions
+(chmod(), stat() etc.) by ones that simulate the effect the real
+library functions would have had, had the user really been root. These
+wrapper functions are in a shared library libfakeroot.so*, which is
+loaded through the LD_PRELOAD mechanism of the dynamic loader.
 
 %description -l pl
-Pakiet w zamierzeniu pozwala na wykonanie operacji takich jak:
-fakeroot rpm --rebuild by usun±æ potrzebê operowania z u¿ytkownika
-root w celu zbudowania pakietu. Fakeroot wykorzystuje LD_PRELOAD,
-któr± to zmienn± ustawia na "libfakeroot.so.0.0" - bibliotekê, która
-dostarcza w³asne chown, chmod, mknod, stat itp.
+Program fakeroot uruchamia polecenia w ¶rodowisku, gdzie wydaje im
+siê, ¿e maj± uprawnienia roota przy operacjach na plikach. Jest to
+przydatne, aby umo¿liwiæ u¿ytkownikom na tworzenie archiwów (tar, ar,
+deb) z plikami maj±cymi bêd±cymi w³asno¶ci± roota. Bez fakeroota do
+tworzenia takich plików z w³a¶ciwymi uprawnieniami potrzebne by³yby
+uprawnienia roota lub bezpo¶rednie tworzenie archiwów bez u¿ycia
+normalnego archiwizera.
 
-Je¶li nie rozumiesz niczego z powy¿szych informacji to nie
-potrzebujesz tego pakietu!
+fakeroot dzia³a poprzez podmianê funkcji bibliotecznych operuj±cych na
+plikach (chmod(), stat() itp.) na takie, które symuluj± efekt
+prawdziwych funkcji gdyby by³y uruchamiane z uprawnieniami roota. Te
+specjalne funkcje znajduj± siê w bibliotece dzielonej libfakeroot.so*
+³adowanej poprzez mechanizm LD_PRELOAD.
 
 %description -l pt_BR
 Este pacote permite a construção de pacotes por usuários sem
@@ -44,16 +55,14 @@ stat e outros, criando um falso ambiente de root.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--disable-static
 %{__make}
 
 %install
@@ -61,6 +70,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/libfakeroot.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -70,8 +81,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc DEBUG AUTHORS COPYING README.fake BUGS debian/changelog
+%doc AUTHORS BUGS COPYING DEBUG README.fake debian/changelog
 %attr(755,root,root) %{_bindir}/*
-%dir %{_libdir}/libfakeroot
-%attr(755,root,root) %{_libdir}/libfakeroot/lib*so.*
-%{_mandir}/man*/*
+%dir %{_libdir}
+%attr(755,root,root) %{_libdir}/libfakeroot.so.*
+%{_mandir}/man1/*
+%lang(es) %{_mandir}/es/man1/*
+%lang(fr) %{_mandir}/fr/man1/*
+%lang(sv) %{_mandir}/sv/man1/*
