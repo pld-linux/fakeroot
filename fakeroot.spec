@@ -3,16 +3,17 @@ Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	0.4.5
-Release:	2
+Release:	3
 %define		debver 2.1
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}-%{debver}.tar.gz
 Patch0:		%{name}-ac_fix.patch
-BuildRequires:	libtool
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
+Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
