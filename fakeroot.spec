@@ -11,7 +11,6 @@ Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.tar
 # Source0-size:	1698312
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
