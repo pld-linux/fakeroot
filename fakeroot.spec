@@ -49,7 +49,7 @@ stat e outros, criando um falso ambiente de root.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
