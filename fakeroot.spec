@@ -3,7 +3,7 @@ Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	0.4.5
-Release:	5
+Release:	6
 %define		debver 2.3
 License:	GPL (see COPYING)
 Group:		Development/Tools
@@ -55,12 +55,12 @@ automake -a -c -f --foreign
 %configure
 %{__make}
 
+gzip -9nf DEBUG AUTHORS COPYING README.fake BUGS debian/changelog
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-
-gzip -9nf DEBUG AUTHORS COPYING README.fake BUGS debian/changelog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
