@@ -43,7 +43,7 @@ LD_PRELOAD, que prove implementacoes de getuid, chown, chmod, mknod,
 stat e outros, criando um falso ambiente de root.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
