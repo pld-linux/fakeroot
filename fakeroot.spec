@@ -2,8 +2,8 @@ Summary:	Gives a fake root environment
 Summary(pl):	Umo¿liwia uzyskanie ,,podrobione'' ¶rodowisko roota
 Name:		fakeroot
 Version:	0.4.4
-Release:	2
-%define		debver 9
+Release:	3
+%define		debver 9.2
 License:	GPL
 Group:		Development/Tools
 Group(de):	Entwicklung/Werkzeuge
@@ -35,15 +35,12 @@ Je¶li nie rozumiesz niczego z powy¿szych informacji to nie
 potrzebujesz tego pakietu!
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 
 %build
 rm missing
-libtoolize --copy --force
-aclocal
-autoconf
 automake -a -c
-%configure
+%configure2_13
 %{__make}
 
 %install
