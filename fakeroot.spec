@@ -2,12 +2,12 @@ Summary:	Gives a fake root environment
 Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	0.9.6
+Version:	1.0.4
 Release:	1
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.tar.gz
-# Source0-md5:	7e54cb1ac258908ca5eecf244bd1d680
+# Source0-md5:	74736f61801df1b06b13557e955ae903
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
@@ -60,6 +60,7 @@ stat e outros, criando um falso ambiente de root.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-static
