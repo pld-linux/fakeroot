@@ -8,6 +8,7 @@ Release:	7
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}-%{debver}.tar.gz
+# Source0-md5:	dfbd103e515ec41301936d439598c645
 Patch0:		%{name}-ac_fix.patch
 Patch1:		%{name}-amfix.patch
 BuildRequires:	autoconf
