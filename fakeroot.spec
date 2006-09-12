@@ -2,15 +2,15 @@ Summary:	Gives a fake root environment
 Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
 Summary(pt_BR):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.5.5
+Version:	1.5.10
 Release:	1
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.tar.gz
-# Source0-md5:	bf177f1e2d71a1e6c11782106e157bef
-BuildRequires:	autoconf >= 2.57
-BuildRequires:	automake
-BuildRequires:	libtool
+# Source0-md5:	76730bf4c9068773e857e18c346d8c81
+#BuildRequires:	autoconf >= 2.59
+#BuildRequires:	automake
+#BuildRequires:	libtool >= 2.0
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,11 +56,11 @@ stat e outros, criando um falso ambiente de root.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
+#%%{__libtoolize}
+#%%{__aclocal}
+#%%{__autoconf}
+#%%{__autoheader}
+#%%{__automake}
 %configure \
 	--disable-static
 %{__make}
@@ -84,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BUGS COPYING DEBUG README.fake debian/changelog
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}
-%attr(755,root,root) %{_libdir}/libfakeroot.so.*
+%attr(755,root,root) %{_libdir}/libfakeroot*.so
 %{_mandir}/man1/*
 %lang(es) %{_mandir}/es/man1/*
 %lang(fr) %{_mandir}/fr/man1/*
