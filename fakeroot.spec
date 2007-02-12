@@ -1,6 +1,6 @@
 Summary:	Gives a fake root environment
-Summary(pl):	Umo¿liwia uzyskanie ,,podrobionego'' ¶rodowiska roota
-Summary(pt_BR):	Cria um falso ambiente de root
+Summary(pl.UTF-8):   UmoÅ¼liwia uzyskanie ,,podrobionego'' Å›rodowiska roota
+Summary(pt_BR.UTF-8):   Cria um falso ambiente de root
 Name:		fakeroot
 Version:	1.5.10
 Release:	1
@@ -31,24 +31,24 @@ library functions would have had, had the user really been root. These
 wrapper functions are in a shared library libfakeroot.so*, which is
 loaded through the LD_PRELOAD mechanism of the dynamic loader.
 
-%description -l pl
-Program fakeroot uruchamia polecenia w ¶rodowisku, gdzie wydaje im
-siê, ¿e maj± uprawnienia roota przy operacjach na plikach. Jest to
-przydatne, aby umo¿liwiæ u¿ytkownikom na tworzenie archiwów (tar, ar,
-deb) z plikami maj±cymi bêd±cymi w³asno¶ci± roota. Bez fakeroota do
-tworzenia takich plików z w³a¶ciwymi uprawnieniami potrzebne by³yby
-uprawnienia roota lub bezpo¶rednie tworzenie archiwów bez u¿ycia
+%description -l pl.UTF-8
+Program fakeroot uruchamia polecenia w Å›rodowisku, gdzie wydaje im
+siÄ™, Å¼e majÄ… uprawnienia roota przy operacjach na plikach. Jest to
+przydatne, aby umoÅ¼liwiÄ‡ uÅ¼ytkownikom na tworzenie archiwÃ³w (tar, ar,
+deb) z plikami majÄ…cymi bÄ™dÄ…cymi wÅ‚asnoÅ›ciÄ… roota. Bez fakeroota do
+tworzenia takich plikÃ³w z wÅ‚aÅ›ciwymi uprawnieniami potrzebne byÅ‚yby
+uprawnienia roota lub bezpoÅ›rednie tworzenie archiwÃ³w bez uÅ¼ycia
 normalnego archiwizera.
 
-fakeroot dzia³a poprzez podmianê funkcji bibliotecznych operuj±cych na
-plikach (chmod(), stat() itp.) na takie, które symuluj± efekt
-prawdziwych funkcji gdyby by³y uruchamiane z uprawnieniami roota. Te
-specjalne funkcje znajduj± siê w bibliotece dzielonej libfakeroot.so*
-³adowanej poprzez mechanizm LD_PRELOAD.
+fakeroot dziaÅ‚a poprzez podmianÄ™ funkcji bibliotecznych operujÄ…cych na
+plikach (chmod(), stat() itp.) na takie, ktÃ³re symulujÄ… efekt
+prawdziwych funkcji gdyby byÅ‚y uruchamiane z uprawnieniami roota. Te
+specjalne funkcje znajdujÄ… siÄ™ w bibliotece dzielonej libfakeroot.so*
+Å‚adowanej poprzez mechanizm LD_PRELOAD.
 
-%description -l pt_BR
-Este pacote permite a construção de pacotes por usuários sem
-privilégios de root. Isso e' feito utilizando libfakeroot.so com
+%description -l pt_BR.UTF-8
+Este pacote permite a construÃ§Ã£o de pacotes por usuÃ¡rios sem
+privilÃ©gios de root. Isso e' feito utilizando libfakeroot.so com
 LD_PRELOAD, que prove implementacoes de getuid, chown, chmod, mknod,
 stat e outros, criando um falso ambiente de root.
 
