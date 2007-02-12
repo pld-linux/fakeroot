@@ -1,6 +1,6 @@
 Summary:	Gives a fake root environment
-Summary(pl.UTF-8):   Umożliwia uzyskanie ,,podrobionego'' środowiska roota
-Summary(pt_BR.UTF-8):   Cria um falso ambiente de root
+Summary(pl.UTF-8):	Umożliwia uzyskanie ,,podrobionego'' środowiska roota
+Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	1.5.10
 Release:	1
