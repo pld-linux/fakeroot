@@ -2,12 +2,12 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	Umożliwia uzyskanie ,,podrobionego'' środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.5.12
+Version:	1.6.5
 Release:	1
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.tar.gz
-# Source0-md5:	f28b6f73e23cb29feb8b84a609344753
+# Source0-md5:	8912fe0f58cd26ea16873ac1acd0b9f4
 #BuildRequires:	autoconf >= 2.59
 #BuildRequires:	automake
 #BuildRequires:	libtool >= 2.0
@@ -81,11 +81,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS COPYING DEBUG README.fake debian/changelog
+%doc AUTHORS BUGS COPYING DEBUG debian/changelog
 %attr(755,root,root) %{_bindir}/*
 %dir %{_libdir}
 %attr(755,root,root) %{_libdir}/libfakeroot*.so
 %{_mandir}/man1/*
 %lang(es) %{_mandir}/es/man1/*
 %lang(fr) %{_mandir}/fr/man1/*
+%lang(nl) %{_mandir}/nl/man1/*
 %lang(sv) %{_mandir}/sv/man1/*
