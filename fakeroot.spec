@@ -2,12 +2,12 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	Umożliwia uzyskanie ,,podrobionego'' środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.6.5
+Version:	1.8.10
 Release:	1
 License:	GPL (see COPYING)
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.tar.gz
-# Source0-md5:	8912fe0f58cd26ea16873ac1acd0b9f4
+# Source0-md5:	5ca6dab46ac7e1617edd71f8bb2ed4be
 #BuildRequires:	autoconf >= 2.59
 #BuildRequires:	automake
 #BuildRequires:	libtool >= 2.0
