@@ -1,13 +1,14 @@
 Summary:	Gives a fake root environment
-Summary(pl.UTF-8):	Umożliwia uzyskanie ,,podrobionego'' środowiska roota
+Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.16
+Version:	1.17
 Release:	1
-License:	GPL (see COPYING)
+License:	GPL v3+
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.bz2
-# Source0-md5:	e8470aa7e965bfc74467de0e594e60b6
+# Source0-md5:	1adc603cc18eedee11d9889798c863db
+URL:		http://fakeroot.alioth.debian.org/
 BuildRequires:	acl-devel
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -74,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS COPYING DEBUG ChangeLog
+%doc AUTHORS BUGS DEBUG README
 %attr(755,root,root) %{_bindir}/faked
 %attr(755,root,root) %{_bindir}/fakeroot
 %dir %{_libdir}
