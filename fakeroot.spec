@@ -2,14 +2,18 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.17
+Version:	1.18
 Release:	1
 License:	GPL v3+
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.bz2
-# Source0-md5:	1adc603cc18eedee11d9889798c863db
+# Source0-md5:	b0e7696460ee54bc378b9c89997f77c2
+Patch0:		%{name}-man.patch
 URL:		http://fakeroot.alioth.debian.org/
 BuildRequires:	acl-devel
+BuildRequires:	autoconf >= 2.61
+BuildRequires:	automake
+BuildRequires:	libtool >= 2:2.2
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,8 +57,14 @@ stat e outros, criando um falso ambiente de root.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-static
 %{__make}
@@ -65,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/libfakeroot.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libfakeroot.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
