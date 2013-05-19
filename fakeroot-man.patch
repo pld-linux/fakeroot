@@ -1,9 +1,0 @@
---- fakeroot-1.18.orig/doc/Makefile.am
-+++ fakeroot-1.18/doc/Makefile.am
-@@ -1,5 +1,5 @@
- AUTOMAKE_OPTIONS=foreign
--##SUBDIRS = es fr sv nl
-+SUBDIRS = es fr sv nl
- 
- man_MANS = faked.1 fakeroot.1
- 
