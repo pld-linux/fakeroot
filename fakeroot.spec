@@ -2,12 +2,12 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.20
+Version:	1.20.1
 Release:	1
 License:	GPL v3+
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.bz2
-# Source0-md5:	9777a81d4d1878422447a1d0030c1f9f
+# Source0-md5:	ef246a7cadf85282180a1e27f7377a26
 URL:		http://fakeroot.alioth.debian.org/
 BuildRequires:	acl-devel
 BuildRequires:	autoconf >= 2.61
