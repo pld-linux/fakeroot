@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	1.20.1
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Development/Tools
 Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.bz2
