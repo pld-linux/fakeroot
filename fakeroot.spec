@@ -2,17 +2,18 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.20.2
+Version:	1.21
 Release:	1
 License:	GPL v3+
 Group:		Development/Tools
-Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.bz2
-# Source0-md5:	a4b4564a75024aa96c86e4d1017ac786
+Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz
+# Source0-md5:	be5c9a0e516869fca4a6758105968e5a
 URL:		http://fakeroot.alioth.debian.org/
 BuildRequires:	acl-devel
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake
 BuildRequires:	libtool >= 2:2.2
+BuildRequires:	po4a
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,6 +66,9 @@ stat e outros, criando um falso ambiente de root.
 %{__automake}
 %configure \
 	--disable-static
+cd doc
+po4a -k 0 --rm-backups --variable "srcdir=../doc/" po4a/po4a.cfg
+cd ..
 %{__make}
 
 %install
