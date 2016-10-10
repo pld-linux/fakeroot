@@ -1,3 +1,6 @@
+# TODO
+# - why the library can't be in standard %{_libdir}?
+
 Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
@@ -17,7 +20,7 @@ BuildRequires:	po4a
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libdir		%{_prefix}/%{_lib}/libfakeroot
+%define		_libexecdir		%{_prefix}/%{_lib}/libfakeroot
 
 %description
 fakeroot runs a command in an environment were it appears to have root
@@ -65,19 +68,21 @@ stat e outros, criando um falso ambiente de root.
 %{__autoheader}
 %{__automake}
 %configure \
+	--libdir=%{_libexecdir} \
 	--disable-static
+
 cd doc
 po4a -k 0 --rm-backups --variable "srcdir=../doc/" po4a/po4a.cfg
 cd ..
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libfakeroot.la
+%{__rm} $RPM_BUILD_ROOT%{_libexecdir}/libfakeroot.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -90,8 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BUGS DEBUG README
 %attr(755,root,root) %{_bindir}/faked
 %attr(755,root,root) %{_bindir}/fakeroot
-%dir %{_libdir}
-%attr(755,root,root) %{_libdir}/libfakeroot*.so
+%dir %{_libexecdir}
+%attr(755,root,root) %{_libexecdir}/libfakeroot*.so
 %{_mandir}/man1/faked.1*
 %{_mandir}/man1/fakeroot.1*
 %lang(de) %{_mandir}/de/man1/*
