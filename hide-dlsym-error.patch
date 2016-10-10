@@ -1,0 +1,53 @@
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=830912
+
+Package: fakeroot
+Version: 1.21-1
+Followup-For: Bug #830912
+User: ubuntu-devel@lists.ubuntu.com
+Usertags: origin-ubuntu yakkety ubuntu-patch
+
+In Ubuntu, the attached patch was applied to achieve the following:
+
+Hide the warnings, at least for now. This should bring us back to glibc 2.23
+state, AFAICT.
+
+  * Add hide-dlsym-error.patch to hide the errors from dlsym() unless
+    debugging was enabled. This makes builds less noisy and fixes failures
+    in APT test suite with glibc 2.24, which started reporting errors for
+    dlsym()
+
+
+Thanks for considering the patch.
+
+Description: Hide error from dlsym()
+ dlsym(), starting in glibc 2.24 actually reports errors. In our case,
+ we try to get ACL functions which are not in the glibc. This causes
+ failures in test suites, so hide those messages for non-debugging
+ purposes for now. It also makes the build logs annoying to read.
+Author: Julian Andres Klode &lt;juliank@ubuntu.com&gt;
+Origin: vendor
+Bug-Debian: <a href="https://bugs.debian.org/830912">https://bugs.debian.org/830912</a>
+Forwarded: no
+Last-Update: 2016-08-12
+
+--- a/libfakeroot.c
++++ b/libfakeroot.c
+@@ -256,10 +256,16 @@ void load_library_symbols(void){
+  /* clear dlerror() just in case dlsym() legitimately returns NULL */
+     msg = dlerror();
+     *(next_wrap[i].doit)=dlsym(get_libc(), next_wrap[i].name);
++
+     if ( (msg = dlerror()) != NULL){
+-      fprintf (stderr, "dlsym(%s): %s\n", next_wrap[i].name, msg);
+-/*    abort ();*/
++#ifdef LIBFAKEROOT_DEBUGGING
++      if (fakeroot_debug) {
++        fprintf (stderr, "dlsym(%s): %s\n", next_wrap[i].name, msg);
++/*      abort ();*/
++      }
++#endif
+     }
++
+   }
+ }
+ 
