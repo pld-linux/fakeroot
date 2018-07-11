@@ -5,12 +5,12 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.21
-Release:	2
+Version:	1.23
+Release:	1
 License:	GPL v3+
 Group:		Development/Tools
-Source0:	ftp://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz
-# Source0-md5:	be5c9a0e516869fca4a6758105968e5a
+Source0:	http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.xz
+# Source0-md5:	b82c5e99b6365a838e73d05718083f6a
 Patch0:		hide-dlsym-error.patch
 URL:		http://fakeroot.alioth.debian.org/
 BuildRequires:	acl-devel
