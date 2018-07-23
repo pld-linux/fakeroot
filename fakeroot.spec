@@ -1,6 +1,3 @@
-# TODO
-# - why the library can't be in standard %{_libdir}?
-
 Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
@@ -12,7 +9,6 @@ Group:		Development/Tools
 Source0:	http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.xz
 # Source0-md5:	b82c5e99b6365a838e73d05718083f6a
 Patch0:		hide-dlsym-error.patch
-URL:		http://fakeroot.alioth.debian.org/
 BuildRequires:	acl-devel
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake
@@ -21,7 +17,7 @@ BuildRequires:	po4a
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libexecdir		%{_prefix}/%{_lib}/libfakeroot
+%define		pkglibdir		%{_libdir}/libfakeroot
 
 %description
 fakeroot runs a command in an environment were it appears to have root
@@ -70,7 +66,7 @@ stat e outros, criando um falso ambiente de root.
 %{__autoheader}
 %{__automake}
 %configure \
-	--libdir=%{_libexecdir} \
+	--libdir=%{pkglibdir} \
 	--disable-static
 
 cd doc
@@ -84,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libexecdir}/libfakeroot.la
+%{__rm} $RPM_BUILD_ROOT%{pkglibdir}/libfakeroot.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,8 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS BUGS DEBUG README
 %attr(755,root,root) %{_bindir}/faked
 %attr(755,root,root) %{_bindir}/fakeroot
-%dir %{_libexecdir}
-%attr(755,root,root) %{_libexecdir}/libfakeroot*.so
+%dir %{pkglibdir}
+%attr(755,root,root) %{pkglibdir}/libfakeroot*.so
 %{_mandir}/man1/faked.1*
 %{_mandir}/man1/fakeroot.1*
 %lang(de) %{_mandir}/de/man1/*
