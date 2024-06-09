@@ -1,0 +1,13 @@
+x32 already has 64-bit time_t, equal to time64_t (and doesn't have *stat*_time64 functions)
+--- fakeroot-1.35/configure.ac.orig	2024-06-05 21:24:39.000000000 +0200
++++ fakeroot-1.35/configure.ac	2024-06-09 15:13:35.063082671 +0200
+@@ -388,7 +388,8 @@ AH_TEMPLATE([TIME64_HACK], [time64 shuff
+ AC_MSG_CHECKING([if we need to cope with time64])
+ AC_EGREP_CPP([time64],[
+ #include <bits/wordsize.h>
+-#if __WORDSIZE == 32
++#include <bits/timesize.h>
++#if (__WORDSIZE == 32) && (__TIMESIZE - 0 != 64)
+ #define __USE_TIME_BITS64 1
+ #include <sys/stat.h>
+ stat

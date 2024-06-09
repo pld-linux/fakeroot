@@ -3,11 +3,13 @@ Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
 Version:	1.35
-Release:	1
+Release:	2
 License:	GPL v3+
 Group:		Development/Tools
 Source0:	http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	0d692daf0f145289b94530bbb6aa6b2c
+Patch0:		%{name}-x32.patch
+URL:		https://wiki.debian.org/FakeRoot
 BuildRequires:	acl-devel
 BuildRequires:	autoconf >= 2.71
 BuildRequires:	automake
@@ -56,6 +58,7 @@ stat e outros, criando um falso ambiente de root.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -75,6 +78,7 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
