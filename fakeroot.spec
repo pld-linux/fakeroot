@@ -2,12 +2,12 @@ Summary:	Gives a fake root environment
 Summary(pl.UTF-8):	"Podrobione" środowiska roota
 Summary(pt_BR.UTF-8):	Cria um falso ambiente de root
 Name:		fakeroot
-Version:	1.37.1.2
+Version:	1.38
 Release:	1
 License:	GPL v3+
 Group:		Development/Tools
 Source0:	http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz
-# Source0-md5:	e1ed8058217779bb364a8268010a60c4
+# Source0-md5:	c542fadc091cc793a9460e2e2e26d925
 Patch0:		%{name}-x32.patch
 URL:		https://wiki.debian.org/FakeRoot
 BuildRequires:	acl-devel
